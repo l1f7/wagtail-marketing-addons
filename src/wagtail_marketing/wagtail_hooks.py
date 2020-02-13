@@ -16,8 +16,10 @@ def urlconf_status_change():
 
 class SeoListingAdmin(ModelAdmin):
     model = get_page_model()
-    menu_label = _("SEO Listing")
-    menu_icon = 'fa-search'
+    menu_label = _("Meta Listing")
+    menu_icon = 'fa-dot-circle-o'
+    menu_order = 1000
+    
     list_display = ('admin_display_title', 'seo_title', 'search_engine', 'score')
     list_filter = get_wagtail_marketing_setting('LIST_FILTER')
     ordering = ('-seo_title', '-search_description')
@@ -58,4 +60,4 @@ class WagtailMarketingAdminGroup(ModelAdminGroup):
     items = (SeoListingAdmin,)
 
 
-modeladmin_register(WagtailMarketingAdminGroup)
+modeladmin_register(SeoListingAdmin)
